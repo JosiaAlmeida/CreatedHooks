@@ -9,15 +9,19 @@ const isObject = (ObjA, ObjB) => {
 const useFecth = (url, options) => {
     const [result, setresult] = useState();
     const [isloading, setisloading] = useState(false)
+    const [controller, setcontroller] = useState(false)
     const urlRef = useRef(url)
     const optionsRef = useRef(options)
-    const [controller, setcontroller] = useState(false)
     useEffect(() => {
-        if (!isObject(url, urlRef.current)) {
+        if (!isObject(urlRef.current,url)) {
             urlRef.current = url
             setcontroller(x => !x)
         }
-    }, [url])
+        if (!isObject(optionsRef.current,options)) {
+            urlRef.current = url
+            setcontroller(x => !x)
+        }
+    }, [url, options])
 
     useEffect(() => {
         setisloading(true)
@@ -34,7 +38,7 @@ const useFecth = (url, options) => {
             }
         }
         Fecth()
-    }, [])
+    }, [controller])
 
     return [result, isloading]
 
@@ -46,9 +50,6 @@ const Home = () => {
             abc: '1'
         }
     })
-    useEffect(()=>{
-        console.log(result)
-    },[postid])
     const handlick = (id) => {
         setpostid(id)
     }
@@ -59,7 +60,9 @@ const Home = () => {
             result.map(post=> <div onClick={()=>handlick(post.id)} key={post.id}>
                 <p> {post.title} </p>
             </div>) :
-            <div onClick={()=>handlick("")}>oi</div>
+            <div onClick={()=>handlick("")}>
+                <p>{result.title}</p>
+            </div>
         }
     </>
     return (
