@@ -1,11 +1,10 @@
 import React from 'react';
-import Home from './Templates/Home';
-import Post from './Templates/Posts';
+import useLayoutEffect from './Templates/useLayoutEffect';
 
 function App() {
   return (
     <div className="App">
-      <Post />
+      <useLayoutEffect />
     </div>
   );
 }
