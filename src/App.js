@@ -1,10 +1,10 @@
 import React from 'react';
-import useLayoutEffect from './Templates/useLayoutEffect';
+import Lazy from './Templates/Lazy/index';
 
 function App() {
   return (
     <div className="App">
-      <useLayoutEffect />
+      <Lazy />
     </div>
   );
 }

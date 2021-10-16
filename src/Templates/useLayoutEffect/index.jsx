@@ -1,5 +1,5 @@
 import React from 'react'
-const useLayoutEffect = () => {
+const UseLayoutEffect = () => {
     return ( 
         <div>
             <h1>Oi</h1>
@@ -7,4 +7,4 @@ const useLayoutEffect = () => {
      );
 }
  
-export default useLayoutEffect;
+export default UseLayoutEffect;
